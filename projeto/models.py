@@ -22,3 +22,13 @@ class Jogo(Base):
     id_usuario:Mapped[int] = mapped_column(ForeignKey('usuarios.id'))
 
     usuario:Mapped['Usuario'] = relationship(back_populates='jogos')
+
+
+class Categoria(Base):
+    __tablename__ = 'categorias'
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    nome: Mapped[String] = mapped_column(String(100))
+    id_jogo:Mapped[int] = mapped_column(ForeignKey('jogos.id'))
+
+    jogos:Mapped[List['Jogo']] = relationship(back_populates='jogos')
