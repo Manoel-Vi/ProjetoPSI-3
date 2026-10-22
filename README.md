@@ -45,3 +45,6 @@ Uso de IA:
 [ ] Utilizei IA generativa e descrevo abaixo onde e como foi utilizada.
 
 Descrição do uso, se houver:
+
+1. Instalar as extenções necessárias em requeriments.txt usando o pip install -r requirements.txt
+
