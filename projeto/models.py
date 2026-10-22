@@ -1,5 +1,5 @@
 from typing import List
-from sqlalchemy import ForeignKey, String
+from sqlalchemy import ForeignKey, String, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base
 
@@ -23,12 +23,20 @@ class Jogo(Base):
 
     usuario:Mapped['Usuario'] = relationship(back_populates='jogos')
 
+    categorias:Mapped[List['Categoria']] = relationship(secondary= jogo_categoria ,back_populates= 'jogos')
+
 
 class Categoria(Base):
     __tablename__ = 'categorias'
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     nome: Mapped[String] = mapped_column(String(100))
-    id_jogo:Mapped[int] = mapped_column(ForeignKey('jogos.id'))
 
-    jogos:Mapped[List['Jogo']] = relationship(back_populates='jogos')
+    jogos:Mapped[List['Jogo']] = relationship(secondary = jogo_categoria ,back_populates= 'categoria')
+
+jogo_categoria = Table(
+    "jogos_categorias",
+    Base.metadata,
+    Column("jogo_id", ForeignKey("jogos.id"), primary_key=True),
+    Column("categoria_id", ForeignKey("categorias.id"), primary_key=True),
+)
