@@ -1,4 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
-{% block head %}
+{% block title %}Início | NexusGX {% endblock %}
+{% block content %}
+<section>
+    <h2>Sua biblioteca de jogos</h2>
+    <p>A melhorzinha do momento</p>
+    <p>
+        <a href="{{ url_for('cadastro') }}">Criar conta</a>
+        <a href="{{ url_for('login') }}">Ja tenho uma conta</a>
+    </p>
+</section>
+
+<section>
+    <h2>Explore a biblioteca</h2>
+    <p>Os jogos ficarão aqui :></p>
+</section>
 {% endblock %}

@@ -1,4 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
-{% block head %}
+{% block title %}Login | NexusGX{% endblock %}
+{% block content %}
+<section>
+    <h2>Entrar na conta</h2>
+    <form method="POST">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Ainda não tem conta? <a href="{{ url_for('cadastro') }}">Cadastre-se</a></p>
+</section>
 {% endblock %}
