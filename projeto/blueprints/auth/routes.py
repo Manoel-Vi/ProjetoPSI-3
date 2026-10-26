@@ -6,9 +6,9 @@ from sqlalchemy import select
 from flask_login import login_user, logout_user, login_required
 from database import session
 
-@auth_bp.route('/cadastro', methods=['get', 'post'])
+@auth_bp.route('/cadastro', methods = ['GET','POST'])
 def cadastro():
-    if request.method == 'post':
+    if request.method == 'POST':
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha']
@@ -21,10 +21,11 @@ def cadastro():
         )
         session.add(usuario)
         session.commit()
+
         return redirect(url_for('auth.login'))
 
     return render_template('auth/cadastro.html')
 
-@auth_bp.route('/login', methods = ['GET', 'POST'])
+@auth_bp.route('/login', methods = ['GET','POST'])
 def login():
     return render_template("auth/login.html")
