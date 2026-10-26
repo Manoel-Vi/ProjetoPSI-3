@@ -1,17 +1,23 @@
+<nav id="navIndex">
 {% extends "base.html" %}
 {% block title %}Início | NexusGX {% endblock %}
 {% block content %}
-<section>
-    <h2>Sua biblioteca de jogos</h2>
-    <p>A melhorzinha do momento</p>
+</nav>
+<div id="esconderFundo">
+<section id="sectionDeCima">
+    <h2 id="biblioteca">Sua biblioteca de jogos</h2>
+    <p id="comentario">A melhorzinha do momento</p>
+    <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
     <p>
         <a href="{{ url_for('cadastro') }}">Criar conta</a>
         <a href="{{ url_for('login') }}">Ja tenho uma conta</a>
     </p>
 </section>
 
-<section>
+<section id="maisDaBiblioteca">
     <h2>Explore a biblioteca</h2>
     <p>Os jogos ficarão aqui :></p>
 </section>
+
 {% endblock %}
+</div>

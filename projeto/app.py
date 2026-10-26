@@ -1,15 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    pass
+    return render_template('index.html')
+
 
 @app.route('/cadastro')
 def cadastro():
-    pass
+    return render_template('cadastro.html')
 
 @app.route('/login')
 def login():
-    pass
+    return render_template('login.html')
