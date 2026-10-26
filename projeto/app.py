@@ -1,15 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "NexusGX"
 
 @app.route('/')
 def index():
-    pass
+    return render_template('index.html')
 
-@app.route('/cadastro')
-def cadastro():
-    pass
-
-@app.route('/login')
-def login():
-    pass
