@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from auth import auth_bp
+from blueprints.auth import auth_bp
 from models import Usuario
 from sqlalchemy import select
 from flask_login import login_user, logout_user, login_required
@@ -25,6 +25,6 @@ def cadastro():
 
     return render_template('auth/cadastro.html')
 
-@auth_bp.routes('/login', methods = ['GET', 'POST'])
+@auth_bp.route('/login', methods = ['GET', 'POST'])
 def login():
     return render_template("auth/login.html")
