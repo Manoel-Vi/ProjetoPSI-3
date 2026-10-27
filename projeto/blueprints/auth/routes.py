@@ -1,10 +1,10 @@
-from flask import redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from blueprints.auth import auth_bp
 from models import Usuario
 from sqlalchemy import select
 from flask_login import login_user, logout_user, login_required
-from database import session
+from database import sessionLocal
 
 @auth_bp.route('/cadastro', methods = ['GET','POST'])
 def cadastro():
@@ -19,8 +19,8 @@ def cadastro():
             email = email,
             senha = senha_hash 
         )
-        session.add(usuario)
-        session.commit()
+        sessionLocal.add(usuario)
+        sessionLocal.commit()
 
         return redirect(url_for('auth.login'))
 
@@ -28,4 +28,17 @@ def cadastro():
 
 @auth_bp.route('/login', methods = ['GET','POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        senha = request.form['senha']
+
+        stmt = select(Usuario).where(Usuario.email == email)
+        usuario = sessionLocal.execute(stmt).scalar()
+
+        if usuario and check_password_hash(usuario.senha, senha):
+            session.clear()
+            session['usuario_id'] = usuario.id
+
+            return redirect(url_for('index'))
+
     return render_template("auth/login.html")

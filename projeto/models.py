@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy import ForeignKey, String, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from database import Base, engine, session
+from database import Base, engine, sessionLocal
 from flask_login import UserMixin
 
 jogo_categoria = Table(

@@ -5,4 +5,4 @@ class Base(DeclarativeBase):
     pass
 
 engine = create_engine("sqlite:///database.db")
-session = Session(bind=engine)
+sessionLocal = Session(bind=engine)
