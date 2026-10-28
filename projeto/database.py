@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase, Session
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 class Base(DeclarativeBase):
     pass
 
-engine = create_engine("sqlite:///database.db")
-sessionLocal = Session(bind=engine)
+engine = create_engine("sqlite:///database.db", echo=False)
+SessionLocal = sessionmaker(bind=engine)

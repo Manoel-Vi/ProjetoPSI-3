@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy import ForeignKey, String, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from database import Base, engine, sessionLocal
+from database import Base, engine, SessionLocal
 from flask_login import UserMixin
 
 jogo_categoria = Table(
@@ -17,7 +17,7 @@ class Usuario(Base, UserMixin):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     nome: Mapped[str] = mapped_column(String(100))
     email: Mapped[str] = mapped_column(String(120), unique=True)
-    senha: Mapped[str] = mapped_column(String(250))
+    senha: Mapped[str] = mapped_column(String(255))
 
     jogos: Mapped[List['Jogo']] = relationship(back_populates='usuario')
 
@@ -41,5 +41,3 @@ class Categoria(Base):
     nome: Mapped[str] = mapped_column(String(100))
 
     jogos:Mapped[List['Jogo']] = relationship(secondary = jogo_categoria ,back_populates= 'categorias')
-
-Base.metadata.create_all(bind=engine)
