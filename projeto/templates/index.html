@@ -1,23 +1,37 @@
-<nav id="navIndex">
 {% extends "base.html" %}
+
 {% block title %}Início | NexusGX {% endblock %}
+
 {% block content %}
-</nav>
-<div id="esconderFundo">
-<section id="sectionDeCima">
-    <h2 id="biblioteca">Sua biblioteca de jogos</h2>
-    <p id="comentario">A melhorzinha do momento</p>
-    <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
-    <p>
-        <a href="{{ url_for('auth.cadastro') }}">Criar conta</a>
-        <a href="{{ url_for('auth.login') }}">Ja tenho uma conta</a>
-    </p>
-</section>
+    <div id="esconderFundo">
+        <section id="sectionDeCima">
+            <h2 id="biblioteca">Sua biblioteca de jogos</h2>
+            <p id="comentario">A melhorzinha do momento</p>
+            <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
 
-<section id="maisDaBiblioteca">
-    <h2>Explore a biblioteca</h2>
-    <p>Os jogos ficarão aqui :></p>
-</section>
+            {% if current_user.is_authenticated %}
+                <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+                <p>Você está logado no sistema.</p>
+                
+                <!--<a href="{{ url_for('login.logout') }}">Sair (Logout)</a> -->
+                <!--<a href="{{ url_for('lista.lista') }}">Ver minha lista</a> -->
+            {% else %}
+                <h2>Bem-vindo(a), visitante!</h2>
+                <p>Faça login para acessar suas listas.</p>
 
+                <p>
+                    <a href="{{ url_for('auth.cadastro') }}">Criar conta</a>
+                    <a href="{{ url_for('auth.login') }}">Ja tenho uma conta</a>
+                </p>
+            {% endif %}
+        </section>
+
+        {% if current_user.is_authenticated %}
+            <section id="maisDaBiblioteca">
+                <h2>Explore a biblioteca</h2>
+                <p>Os jogos ficarão aqui :></p>
+            </section>
+        {% endif %}
+    </div>
 {% endblock %}
-</div>
+    

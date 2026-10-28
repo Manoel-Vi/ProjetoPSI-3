@@ -10,10 +10,3 @@ app.register_blueprint(auth_bp)
 def index():
     return render_template('index.html')
 
-@app.route('/cadastro')
-def cadastro():
-    pass
-
-@app.route('/login')
-def login():
-    pass
