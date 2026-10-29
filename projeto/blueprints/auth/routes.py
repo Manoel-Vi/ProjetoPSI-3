@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from blueprints.auth import auth_bp
 from models import Usuario
 from sqlalchemy import select
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from database import SessionLocal
 
 @auth_bp.route('/cadastro', methods = ['GET','POST'])
@@ -69,3 +69,17 @@ def logout():
 @login_required
 def conta():
     return render_template("auth/usuario.html")
+
+@auth_bp.route('/trocar_nome', methods = ['POST'])
+@login_required
+def trocar_nome():
+    novo_nome = request.form['nome'].strip()
+    if novo_nome:
+        db = SessionLocal()
+        usuario = db.get(Usuario, current_user.id)
+        if usuario:
+            usuario.nome = novo_nome
+            db.commit()
+            flash("Nome atualizado com sucesso!")
+
+    return redirect(url_for('auth.conta'))

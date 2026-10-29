@@ -6,9 +6,14 @@
     <h2>Minha conta</h2>
     <div>
         <h1> Nome: {{ current_user.nome }}</h1>
-        <a href=""></a>
         <h2>Email: {{ current_user.email }}</h2>
-        <a href=""></a>
+        <form action="{{url_for('auth.trocar_nome')}}" method="POST">
+            <h3>Trocar nome</h3>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <button type="submit">Atualizar nome</button>
+        </form>
+        
     </div>
     <a href="{{ url_for('games.listar_jogos') }}">Acessar meus jogos</a>
     <a href="{{ url_for('games.listar_pedidos') }}">Acessar meus pedidos</a>
