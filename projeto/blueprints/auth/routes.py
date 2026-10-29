@@ -57,3 +57,8 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@auth_bp.route('/conta')
+@login_required
+def conta():
+    return render_template("auth/usuario.html")

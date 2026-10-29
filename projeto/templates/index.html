@@ -26,6 +26,9 @@
         {% if current_user.is_authenticated %}
             <section id="maisDaBiblioteca">
                 <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
+                <a href="{{ url_for('games.listar_jogos') }}">l</a>
+                <a href="{{ url_for('games.listar_pedidos') }}">i</a>
+                <a href="{{ url_for('auth.conta') }}">conta</a>
                 <h2>Explore a biblioteca</h2>
                 <p>Os jogos ficarão aqui :></p>
             </section>

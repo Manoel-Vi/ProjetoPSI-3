@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from blueprints.auth import auth_bp
 from blueprints.error import error_bp
+from blueprints.games import games_bp
 from database import Base, engine, SessionLocal
 from flask_login import LoginManager
 from models import Usuario
@@ -12,6 +13,7 @@ Base.metadata.create_all(bind=engine)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(error_bp)
+app.register_blueprint(games_bp)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
