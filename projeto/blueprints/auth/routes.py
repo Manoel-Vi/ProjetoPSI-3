@@ -18,7 +18,8 @@ def cadastro():
         
         if db.execute(stmt).scalar():
             db.close()
-            return "E-mail já cadastrado!"
+            flash("E-mail já cadastrado!")
+            return redirect(url_for('auth.cadastro'))
 
         senha_hash = generate_password_hash(senha)
         usuario = Usuario(
@@ -31,6 +32,7 @@ def cadastro():
         db.commit()
         db.close()
 
+        flash("Usuário cadastrado com Sucesso!")
         return redirect(url_for('auth.login'))
 
     return render_template('auth/cadastro.html')
@@ -48,7 +50,11 @@ def login():
 
         if usuario and check_password_hash(usuario.senha, senha):
             login_user(usuario)
+            flash("Usuário logado com Sucesso!")
             return redirect(url_for('index'))
+        else:
+            flash("Usuário ou senha inválidos!")
+            return redirect(url_for('auth.login'))
 
     return render_template("auth/login.html")
 
@@ -56,6 +62,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash("Usuário deslogado com Sucesso!")
     return redirect(url_for('index'))
 
 @auth_bp.route('/conta')

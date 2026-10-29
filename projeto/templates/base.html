@@ -9,6 +9,15 @@
 <body>
 
     <header>
+        {% if current_user.is_authenticated %}
+        <div class="cabecalho">
+            <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+            <a href="{{ url_for('auth.logout') }}">Sair</a>
+        </div>
+        {% endif %}
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
         {% block header %}{% endblock %}
     </header>
 
