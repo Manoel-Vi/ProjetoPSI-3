@@ -2,7 +2,16 @@
 {% block title %}Minha conta | NexusGX{% endblock %}
 {% block content %}
 <section>
-    <h2>Minha conta</h2>
     <p>As informações do usuário aparecerão aqui.</p>
+    <h2>Minha conta</h2>
+    <div>
+        <h1> Nome: {{ current_user.nome }}</h1>
+        <a href=""></a>
+        <h2>Email: {{ current_user.email }}</h2>
+        <a href=""></a>
+    </div>
+    <a href="{{ url_for('games.listar_jogos') }}">Acessar meus jogos</a>
+    <a href="{{ url_for('games.listar_pedidos') }}">Acessar meus pedidos</a>
+    <a href="{{ url_for('games.cadastro') }}">Adicionar novo jogo a plataforma</a>
 </section>
 {% endblock %}

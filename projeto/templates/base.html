@@ -12,6 +12,8 @@
         {% if current_user.is_authenticated %}
         <div class="cabecalho">
             <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+            <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
+            <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
             <a href="{{ url_for('auth.logout') }}">Sair</a>
         </div>
         {% endif %}
