@@ -9,20 +9,28 @@
 <body>
     {% if not esconder_header %}
     <header>
-        <img src="" alt="" class="logo">
-        {% if current_user.is_authenticated %}
-            <h3>Bem-vindo(a), {{ current_user.nome }}!</h2>
-            <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
-            <br>
-            <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
-            <a href="{{ url_for('auth.logout') }}">Sair</a>
-        {% else %}
-            <h3>Bem-vindo(a), visitante!</h2>
+        <img class="logo" src="{{ url_for('static', filename='./imagensUsadas/logo.png') }}" alt="Logo do site">
+        
+        <div id="container-usuario">
+                
+            <img class="user" src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="Usuário">
+            {% if current_user.is_authenticated %}
+                <h3 id="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h3>
+                <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
+                <br>
+                <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
+                <a href="{{ url_for('auth.logout') }}">Sair</a>
+            {% else %}
+                <h3 class="bem-vindo">Bem-vindo(a), visitante!</h3>
+        </div>
             <p>Faça login para acessar suas listas.</p>
-            <ul>
-                <li><a href="{{ url_for('auth.cadastro') }}">Criar conta</a></li>      
-                <li><a href="{{ url_for('auth.login') }}">Ja tenho uma conta</a></li>   
-            </ul>
+
+            
+            <nav id="container-logins">
+                <a id="criar-conta" href="{{ url_for('auth.cadastro') }}">Criar conta</a>
+                <br>
+                <a id="tem-conta" href="{{ url_for('auth.login') }}">Já tenho uma conta</a>
+            </nav>
         {% endif %}
     </header>
     {% endif %}

@@ -3,6 +3,10 @@
 {% block title %} Início | NexusGX {% endblock %}
 
 {% block content %}
+    <header id="header-topo">
+        <input id="pesquisar" type="text" placeholder="Pesquisar...">
+        <img id="sininho" src="{{ url_for('static', filename='./imagensUsadas/sininho.png') }}" alt="Notificações">
+    </header>
     <div id="esconderFundo">
         <section id="sectionDeCima">
             <h2 id="biblioteca">Sua biblioteca de jogos</h2>
@@ -12,7 +16,7 @@
                 {% for message in get_flashed_messages() %}
                     <div class="alert">{{ message }}</div>
                 {% endfor %}
-                <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+                <h2 class="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h2>
                 <p>Você está logado no sistema.</p>
             {% else %}
                 <h2>Faça Login</h2>
