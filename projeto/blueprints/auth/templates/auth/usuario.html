@@ -4,6 +4,9 @@
 <section>
     <p>As informações do usuário aparecerão aqui.</p>
     <h2>Minha conta</h2>
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
     <div>
         <h1> Nome: {{ current_user.nome }}</h1>
         <h2>Email: {{ current_user.email }}</h2>
