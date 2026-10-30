@@ -11,13 +11,12 @@
         <input type="text" id="descricao" name="descricao" required>
 
         <label for="senha">Categoria:</label>
-        <!--<select name="categoria" id="categoria">
+        <select name="categoria" id="categoria">
             <option value="nenhum">Nenhum</option> 
-        {% for categoria i categorias %}
+            {% for categoria in categorias %}
                 <option value="{{categoria.nome}}">{{categoria.nome}}</option>
             {% endfor %}
-        </select>-->
-        <input type="password" id="senha" name="senha" required>
+        </select>
 
         <button type="submit">Cadastrar</button>
     </form>
