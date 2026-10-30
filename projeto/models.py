@@ -19,7 +19,6 @@ class Usuario(Base, UserMixin):
     email: Mapped[str] = mapped_column(String(120), unique=True)
     senha: Mapped[str] = mapped_column(String(255))
 
-    jogos_cadastrados: Mapped[List['Jogo']] = relationship(back_populates='criador')
     pedidos: Mapped[List['Pedido']] = relationship(back_populates='usuario')
 
 class Jogo(Base):
@@ -29,9 +28,7 @@ class Jogo(Base):
     nome: Mapped[str] = mapped_column(String(100))
     descricao: Mapped[str] = mapped_column(String(200))
     imagem: Mapped[str] = mapped_column(String(100))
-    id_usuario:Mapped[int] = mapped_column(ForeignKey('usuarios.id'))
 
-    criador: Mapped['Usuario'] = relationship(back_populates='jogos_cadastrados')
     pedidos: Mapped[List['Pedido']] = relationship(back_populates='jogo')
 
     categorias:Mapped[List['Categoria']] = relationship(secondary= jogo_categoria ,back_populates= 'jogos')
