@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% set esconder_header = true %}
 {% block title %}Login | NexusGX{% endblock %}
 {% block content %}
-<section>
+<section class="cadastro">
     <h2>Entrar na conta</h2>
-    <form action="{{url_for('auth.login')}}" method="POST">
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <form action="{{url_for('auth.login')}}" method="POST" class="form_cadastro">
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" required>
 

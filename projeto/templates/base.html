@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
+    {% if not esconder_header %}
     <header>
+        <img src="" alt="" class="logo">
         {% if current_user.is_authenticated %}
-        <div class="cabecalho">
-            
-            <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+            <h3>Bem-vindo(a), {{ current_user.nome }}!</h2>
             <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
             <br>
             <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
             <a href="{{ url_for('auth.logout') }}">Sair</a>
-        </div>
+        {% else %}
+            <h3>Bem-vindo(a), visitante!</h2>
+            <p>Faça login para acessar suas listas.</p>
+            <ul>
+                <li><a href="{{ url_for('auth.cadastro') }}">Criar conta</a></li>      
+                <li><a href="{{ url_for('auth.login') }}">Ja tenho uma conta</a></li>   
+            </ul>
         {% endif %}
-        {% for message in get_flashed_messages() %}
-            <div class="alert">{{ message }}</div>
-        {% endfor %}
-        {% block header %}{% endblock %}
     </header>
+    {% endif %}
 
     <main>
         {% block content %}{% endblock %}
