@@ -11,11 +11,22 @@
     <div id="containerAmigosEDetalhes">
 
         <div id="coluna-esquerda">
-            <nav id="imagem"></nav>
+            <nav id="imagem">
+                <h3 id="gamezone">GAMEZONE</h3>
+
+                <h1>Sua próxima platina <br> começa <vermelho>aqui!</vermelho></h1>
+                <p class="descricao">Sua biblioteca de jogos, em um só lugar.</p>
+                <p class="descricao">Explore, jogue e viva grandes aventuras.</p>
+
+                <a id="explorar" href="{{ url_for('auth.cadastro') }}"> Explore seus jogos</a>
+            </nav>
 
             <div id="esconderFundo">
                 <section id="sectionDeCima">
                     <h2 id="biblioteca">Sua biblioteca de jogos</h2>
+                    <nav class="jogos">
+                        /*COLOQUE OS JOGOS QUE VÃO APARECER AQUI*/
+                    </nav>
                     <p id="comentario">A melhorzinha do momento</p>
 
                     {% if current_user.is_authenticated %}
@@ -43,14 +54,13 @@
         <div id="containers-section">
             <section id="tempoDeJogo">
                 <div class="atividade-header">
-                    <!-- Ícone de relógio em SVG -->
                     <img  src="{{ url_for('static', filename='./imagensUsadas/relogio.png') }}" alt="ver a hora né">
                     <h2>Atividade Recente</h2>
                 </div>
 
                 <ul class="lista-atividades">
                     <li class="item-atividade">
-                    <img  src="{{ url_for('static', filename='./imagensUsadas/eldenring.png') }}" alt="Elden Ring" class="jogo-quadrado">
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/eldenring.png') }}" alt="" class="jogo-quadrado">
                     <div class="detalhes-atividade">
                         <p>Você adicionou Elden Ring à sua biblioteca</p>
                         <p class="tempo-cinza">há 2 horas</p>
@@ -84,7 +94,46 @@
                 </section>
             </section>
             <br>
-            <section id="amigosOnline"></section>
+            <section id="amigosOnline">
+                <div class="atividade-amigos">
+                    <img id="amigos" src="{{ url_for('static', filename='./imagensUsadas/amigos.png') }}" alt="amigux">
+                    <h2>Amigos Online</h2>
+                </div>
+
+                <ul class="lista-amigos">
+                    <li class="bloco-amigo">
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/user.png') }}"alt="1" class="icon-amigos">
+                    <div class="detalhes-atividade">
+                        <p>Gabriel delas mil grau</p>
+                        <p class="online"><verde>Está jogando Valorant</verde></p>
+                    </div>
+                    </li>
+
+                    <li class="bloco-amigo">
+                    <img src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="2" class="icon-amigos">
+                    <div class="detalhes-atividade">
+                        <p>Alisson 67 six seven</p>
+                        <p class="online">jogou Brawlhalla há 5 horas</p>
+                    </div>
+                    </li>
+
+                    <li class="bloco-amigo">
+                    <img src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="3" class="icon-amigos">
+                    <div class="detalhes-atividade">
+                        <p>Manoelgameplay123</p>
+                        <p class="online">ontem</p>
+                    </div>
+                    </li>
+
+                    <li class="bloco-amigo">
+                    <img src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="4" class="icon-amigos">
+                    <div class="detalhes-atividade">
+                        <p>Lovarluci</p>
+                        <p class="online">1 semana atrás... :(</p>
+                    </div>
+                    </li>
+                </ul>
+            </section>
         </div>
     </div>
 {% endblock %}
