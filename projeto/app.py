@@ -5,7 +5,7 @@ from blueprints.games import games_bp
 from database import Base, engine, SessionLocal
 from flask_login import LoginManager
 from models import Usuario
-from seed import adicionar_admin, adicionar_categorias, popular_jogos
+from seed import adicionar_admin, adicionar_categorias, popular_jogos, popular_jogos_categorias
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "NexusGX"
@@ -15,6 +15,7 @@ Base.metadata.create_all(bind=engine)
 adicionar_admin()
 adicionar_categorias()
 popular_jogos()
+popular_jogos_categorias()
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(error_bp)

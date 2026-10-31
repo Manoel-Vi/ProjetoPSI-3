@@ -1,6 +1,6 @@
 from database import SessionLocal
-from sqlalchemy import select
-from models import Usuario, Jogo, Categoria
+from sqlalchemy import select, insert
+from models import Usuario, Jogo, Categoria, jogo_categoria
 from werkzeug.security import generate_password_hash
 
 def adicionar_admin():
@@ -60,32 +60,23 @@ def popular_jogos():
         db.add_all(jogos)
         db.commit()
         db.close()
-        
+
 def popular_jogos_categorias():
     db = SessionLocal()
 
-    relacionamentos = {
-        'Call of Duty: Modern Warfare 4': ['Ação', 'Tiro'],
-        'Dark Souls 2': ['RPG', 'Ação', 'Souls-like'],
-        'Elden Ring': ['RPG', 'Ação', 'Souls-like', 'Aventura'],
-        'Far Cry 6': ['Ação', 'Tiro', 'Aventura'],
-        'Terraria': ['Aventura', 'Ação'],
-        'EA Sports FC 26 (FIFA 26)': ['Esportes', 'Simulação'],
-        'Hollow Knight: Silksong': ['Aventura', 'Ação'],
-        'Monster Hunter Wilds': ['RPG', 'Ação', 'Aventura'],
-        'Monster Hunter Rise': ['RPG', 'Ação', 'Aventura'],
-        'The Binding of Isaac': ['Ação', 'Aventura']
-    }
+    if not db.execute(select(jogo_categoria)).scalar():
+        categorias = [[1,1], [1,7], [2,2], [2,1], [2,5], [3,1], [3,2], [3,5], [3,3], [4,1], [4,3], [4,7], [5,3], [5,1], [6,9], [6,8], [7,3], [7,1], [8,2], [8,1], [8,3], [9,1], [9,2], [9,3], [10,1], [10,3]]
 
-    for nome_jogo, nomes_categorias in relacionamentos.items():
-        jogo = db.execute(select(Jogo).where(Jogo.nome == nome_jogo)).scalar()
-        
-        if jogo:
-            for nome_cat in nomes_categorias:
-                categoria = db.execute(select(Categoria).where(Categoria.nome == nome_cat)).scalar()
-                
-                if categoria and categoria not in jogo.categorias:
-                    jogo.categorias.append(categoria)
-    
-    db.commit()
-    db.close()
+        acossiacoes = []
+
+        for i in categorias:
+            item = {
+                'jogo_id': i[0],
+                'categoria_id': i[1]
+            }
+
+            acossiacoes.append(item)
+
+        db.execute(insert(jogo_categoria), acossiacoes)
+        db.commit()
+        db.close()
