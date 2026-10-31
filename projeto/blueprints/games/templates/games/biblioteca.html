@@ -4,5 +4,14 @@
 <section>
     <h2>jogos</h2>
     <p>Os jogos disponiveis aparecerão aqui.</p>
+    <ul>
+        {% for jogo in jogos %}
+            <li>
+                <img src='{{ jogo.imagem }}'>
+                <p>{{ jogo.nome }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    
 </section>
 {% endblock %}
