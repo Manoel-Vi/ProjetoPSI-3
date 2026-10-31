@@ -7,31 +7,84 @@
         <input id="pesquisar" type="text" placeholder="Pesquisar...">
         <img id="sininho" src="{{ url_for('static', filename='./imagensUsadas/sininho.png') }}" alt="Notificações">
     </header>
-    <div id="esconderFundo">
-        <section id="sectionDeCima">
-            <h2 id="biblioteca">Sua biblioteca de jogos</h2>
-            <p id="comentario">A melhorzinha do momento</p>
 
-            {% if current_user.is_authenticated %}
-                {% for message in get_flashed_messages() %}
-                    <div class="alert">{{ message }}</div>
-                {% endfor %}
-                <h2 class="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h2>
-                <p>Você está logado no sistema.</p>
-            {% else %}
-                <h2>Faça Login</h2>
-                <p>Para acessar suas listas.</p>
-            {% endif %}
-        </section>
+    <div id="containerAmigosEDetalhes">
 
-        {% if current_user.is_authenticated %}
-            <section id="maisDaBiblioteca">
-                <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
-                <h2>Explore a biblioteca</h2>
-                <a href="{{ url_for('games.biblioteca')}}">Biblioteca</a>
-                <p>Para ver mais jogos clique acima!</p>
+        <div id="coluna-esquerda">
+            <nav id="imagem"></nav>
+
+            <div id="esconderFundo">
+                <section id="sectionDeCima">
+                    <h2 id="biblioteca">Sua biblioteca de jogos</h2>
+                    <p id="comentario">A melhorzinha do momento</p>
+
+                    {% if current_user.is_authenticated %}
+                        {% for message in get_flashed_messages() %}
+                            <div class="alert">{{ message }}</div>
+                        {% endfor %}
+                        <h2 class="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h2>
+                        <p>Você está logado no sistema.</p>
+                    {% else %}
+                        <h2>Faça Login</h2>
+                        <p>Para acessar suas listas.</p>
+                    {% endif %}
+                </section>
+
+                {% if current_user.is_authenticated %}
+                    <section id="maisDaBiblioteca">
+                        <h1>área dos jogos <!-- (só coloque a imagem aqui ass:Alisson) --></h1>
+                        <h2>Explore a biblioteca</h2>
+                        <a href="{{ url_for('games.biblioteca')}}">Biblioteca</a>
+                        <p>Para ver mais jogos clique acima!</p>
+                    </section>
+                {% endif %}
+            </div>
+        </div>
+        <div id="containers-section">
+            <section id="tempoDeJogo">
+                <div class="atividade-header">
+                    <!-- Ícone de relógio em SVG -->
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/relogio.png') }}" alt="ver a hora né">
+                    <h2>Atividade Recente</h2>
+                </div>
+
+                <ul class="lista-atividades">
+                    <li class="item-atividade">
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/eldenring.png') }}" alt="Elden Ring" class="jogo-quadrado">
+                    <div class="detalhes-atividade">
+                        <p>Você adicionou Elden Ring à sua biblioteca</p>
+                        <p class="tempo-cinza">há 2 horas</p>
+                    </div>
+                    </li>
+
+                    <li class="item-atividade">
+                    <img src="{{ url_for('static', filename='./imagensUsadas/silksong.png') }}" alt="" class="jogo-quadrado">
+                    <div class="detalhes-atividade">
+                        <p>Conquistou uma conquista em Silksong</p>
+                        <p class="tempo-cinza">há 5 horas</p>
+                    </div>
+                    </li>
+
+                    <li class="item-atividade">
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/mhw.png') }}" alt="" class="jogo-quadrado">
+                    <div class="detalhes-atividade">
+                        <p>Jogou <p class='negrito'>Monster Hunter Wilds</p></p>
+                        <p class="tempo-cinza">ontem</p>
+                    </div>
+                    </li>
+
+                    <li class="item-atividade">
+                    <img  src="{{ url_for('static', filename='./imagensUsadas/terraria.png') }}" alt="" class="jogo-quadrado">
+                    <div class="detalhes-atividade">
+                        <p>Comentou na comunidade</p>
+                        <p class="tempo-cinza">ontem</p>
+                    </div>
+                    </li>
+                </ul>
+                </section>
             </section>
-        {% endif %}
+            <br>
+            <section id="amigosOnline"></section>
+        </div>
     </div>
 {% endblock %}
-    

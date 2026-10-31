@@ -13,7 +13,6 @@
         
         <div id="container-usuario">
                 
-            <img class="user" src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="Usuário">
             {% if current_user.is_authenticated %}
                 <h3 id="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h3>
                 <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
@@ -21,6 +20,7 @@
                 <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
                 <a href="{{ url_for('auth.logout') }}">Sair</a>
             {% else %}
+            <img class="user" src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="Usuário">
                 <h3 class="bem-vindo">Bem-vindo(a), visitante!</h3>
         </div>
             <p>Faça login para acessar suas listas.</p>
