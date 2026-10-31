@@ -1,17 +1,27 @@
 {% extends "base.html" %}
-{% block title %} Jogos | NexusGX{% endblock %}
+{% block title %}Biblioteca | NexusGX{% endblock %}
 {% block content %}
-<section>
-    <h2>jogos</h2>
-    <p>Os jogos disponiveis aparecerão aqui.</p>
-    <ul>
+
+<section class="secao-biblioteca">
+    <div class="biblioteca-cabecalho">
+        <h2>Sua Biblioteca</h2>
+        <p>Explore e gerencie seus jogos instalados e favoritos.</p>
+    </div>
+
+    <ul id="bibliotecaImagens">
         {% for jogo in jogos %}
             <li>
-                <img src='{{ jogo.imagem }}'>
-                <p>{{ jogo.nome }}</p>
+                <div class="alinhar-jogo">
+                    <img src="{{ jogo.imagem }}" alt="{{ jogo.nome }}">
+                    <div class="info-jogo">
+                        <p>{{ jogo.nome }}</p>
+                    </div>
+                </div>
             </li>
+        {% else %}
+            <p class="resto-jogos">Os jogos disponíveis aparecerão aqui.</p>
         {% endfor %}
     </ul>
-    
 </section>
+
 {% endblock %}
