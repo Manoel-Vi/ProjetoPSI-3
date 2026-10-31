@@ -2,23 +2,34 @@
 {% set esconder_header = true %}
 {% block title %}Cadastro | NexusGX{% endblock %}
 {% block content %}
-<section class="cadastro">
-    <h2>Criar conta</h2>
-    {% for message in get_flashed_messages() %}
-        <div class="alert">{{ message }}</div>
-    {% endfor %}
-    <form action="{{url_for('auth.cadastro')}}" method="POST" class="form_cadastro">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required>
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
+<div id="container-cadastro">
+    <div class="personagens">
+        <img class="npc" src="{{ url_for('static', filename='./imagensUsadas/npcs.png') }}" alt="Personagens">
+    </div>
+   
+    <section class="cadastro">
+        <h2>Criar conta</h2>
+        
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
 
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha" required>
+        <form action="{{ url_for('auth.cadastro') }}" method="POST" class="form_cadastro">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
 
-        <button type="submit">Cadastrar</button>
-    </form>
-    <p>Ja tem uma conta? <a href="{{ url_for('auth.login') }}">Entrar</a></p>
-</section>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="Seu E-mal">
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required placeholder="Sua senha (shhhhh)">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        
+        <p>Já tem uma conta? <a href="{{ url_for('auth.login') }}">Entrar</a></p>
+    </section>
+</div>
+
 {% endblock %}
