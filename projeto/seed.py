@@ -60,3 +60,32 @@ def popular_jogos():
         db.add_all(jogos)
         db.commit()
         db.close()
+        
+def popular_jogos_categorias():
+    db = SessionLocal()
+
+    relacionamentos = {
+        'Call of Duty: Modern Warfare 4': ['Ação', 'Tiro'],
+        'Dark Souls 2': ['RPG', 'Ação', 'Souls-like'],
+        'Elden Ring': ['RPG', 'Ação', 'Souls-like', 'Aventura'],
+        'Far Cry 6': ['Ação', 'Tiro', 'Aventura'],
+        'Terraria': ['Aventura', 'Ação'],
+        'EA Sports FC 26 (FIFA 26)': ['Esportes', 'Simulação'],
+        'Hollow Knight: Silksong': ['Aventura', 'Ação'],
+        'Monster Hunter Wilds': ['RPG', 'Ação', 'Aventura'],
+        'Monster Hunter Rise': ['RPG', 'Ação', 'Aventura'],
+        'The Binding of Isaac': ['Ação', 'Aventura']
+    }
+
+    for nome_jogo, nomes_categorias in relacionamentos.items():
+        jogo = db.execute(select(Jogo).where(Jogo.nome == nome_jogo)).scalar()
+        
+        if jogo:
+            for nome_cat in nomes_categorias:
+                categoria = db.execute(select(Categoria).where(Categoria.nome == nome_cat)).scalar()
+                
+                if categoria and categoria not in jogo.categorias:
+                    jogo.categorias.append(categoria)
+    
+    db.commit()
+    db.close()

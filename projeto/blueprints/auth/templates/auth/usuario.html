@@ -1,25 +1,35 @@
 {% extends "base.html" %}
 {% block title %}Minha conta | NexusGX{% endblock %}
 {% block content %}
-<section>
-    <p>As informações do usuário aparecerão aqui.</p>
-    <h2>Minha conta</h2>
-    {% for message in get_flashed_messages() %}
-        <div class="alert">{{ message }}</div>
-    {% endfor %}
-    <div>
-        <h1> Nome: {{ current_user.nome }}</h1>
-        <h2>Email: {{ current_user.email }}</h2>
-        <form action="{{url_for('auth.trocar_nome')}}" method="POST">
-            <h3>Trocar nome</h3>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-            <button type="submit">Atualizar nome</button>
-        </form>
+
+<div class="container-perfil">
+    <div class="card-perfil">
         
+        <div class="perfil-topo">
+            <div class="avatar-placeholder"></div>
+            <h2>Minha Conta</h2>
+            <p class="aviso-info">As informações do usuário aparecerão aqui.</p>
+        </div>
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        <div class="info-usuario">
+            <h1><vermelho>Nome: </vermelho> {{ current_user.nome }}</h1>
+            <h2> <vermelho>E-mail: </vermelho>{{ current_user.email }}</h2>
+        </div>
+        <form action="{{ url_for('auth.trocar_nome') }}" method="POST" class="form-perfil">
+            <label for="nome">Trocar nome</label>
+            <div class="grupo-input">
+                <input type="text" id="nome" name="nome" required placeholder="Novo nome">
+                <button type="submit" class="btn-atualizar">Atualizar nome</button>
+            </div>
+        </form>
+        <div class="links-perfil">
+            <a href="{{ url_for('games.listar_jogos') }}" class="link-acao">Acessar meus jogos</a>
+            <a href="{{ url_for('games.listar_pedidos') }}" class="link-acao">Acessar meus pedidos</a>
+        </div>
+
     </div>
-    <a href="{{ url_for('games.listar_jogos') }}">Acessar meus jogos</a>
-    <a href="{{ url_for('games.listar_pedidos') }}">Acessar meus pedidos</a>
-    <a href="{{ url_for('games.cadastro') }}">Adicionar novo jogo a plataforma</a>
-</section>
+</div>
+
 {% endblock %}

@@ -94,24 +94,54 @@ header li{
     font-size: 150%;
     margin-left: 2%;
     text-shadow: 2px 2px 5px black;
-}
-#maisDaBiblioteca h1{
-    width: auto;
-    height: 35vh;
+}#maisDaBiblioteca {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50VH;
+    background-color: #12141d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-#maisDaBiblioteca{
-    color: white;
-    width: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4%;
+    text-align: center;
+    gap: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    margin-top: -20vh;
+}
+
+#maisDaBiblioteca h1 {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 10px;
+}
+
+#maisDaBiblioteca h2 {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#maisDaBiblioteca p {
+    font-size: 13px;
+    color: #888888;
+}
+
+#maisDaBiblioteca a {
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: #ff1e38;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 3vh;
+    font-weight: bold;
 }
 .cadastro{
     background-color: red;
@@ -564,4 +594,127 @@ verde{
 .resto-jogos {
     color: #888888;
     font-size: 15px;
+}
+.container-perfil {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0b0c10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+.card-perfil {
+    width: 50vh;
+    background-color: rgba(0,0,4,1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.perfil-topo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.perfil-topo h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+.aviso-info {
+    color: #888888;
+    font-size: 13px;
+}
+.alert {
+    width: 100%;
+    background-color: rgba(255, 30, 56, 0.2);
+    border: 1px solid #ff1e38;
+    color: #ff1e38;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+.info-usuario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #0b0c10;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.info-usuario h1, .info-usuario h2 {
+    font-size: 14px;
+    color: gray;
+    font-weight: normal;
+}
+.form-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-perfil label {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.grupo-input {
+    display: flex;
+    gap: 10px;
+}
+
+.form-perfil input {
+    height: 48px;
+    background-color: #0b0c10;
+    border: 1px solid rgba(255, 30, 56, 0.4);
+    border-radius: 6px;
+    padding: 0 15px;
+    color: white;
+    font-size: 14px;
+}
+.btn-atualizar {
+    height: 48px;
+    padding-left: 3.5vh;
+    padding-right: 3.5vh;
+    background-color:rgb(233, 49, 49);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0px 4px 15px rgba(255, 30, 56, 0.3);
+}
+.links-perfil {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+.link-acao {
+    text-align: center;
+    padding: 12px;
+    background-color: rgb(16, 15, 15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+#meus-jogos, #meus-pedidos{
+    font-size: 28px;
+    font-weight: bold;
+    border-left: 4px solid rgb(219, 52, 52);
+    padding-left: 12px;
+    margin-bottom: 8px;
+    color: white;
 }
