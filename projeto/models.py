@@ -27,7 +27,7 @@ class Jogo(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     nome: Mapped[str] = mapped_column(String(100))
     descricao: Mapped[str] = mapped_column(String(200))
-    imagem: Mapped[str] = mapped_column(String(100))
+    imagem: Mapped[str] = mapped_column(String(150))
 
     pedidos: Mapped[List['Pedido']] = relationship(back_populates='jogo')
 

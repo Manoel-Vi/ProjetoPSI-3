@@ -41,3 +41,22 @@ def adicionar_categorias():
 
         db.commit()
         db.close()
+
+def popular_jogos():
+    db = SessionLocal()
+
+    if not db.execute(select(Jogo)).scalar():
+        jogos = [Jogo(nome='Call of Duty: Modern Warfare 4', descricao='Jogo de tiro em primeira pessoa com combates intensos, operações militares e modos multiplayer competitivos.', imagem='projeto/imagensUsadas/imagensUsadas/codmw4.png'),
+                Jogo(nome='Dark Souls 2', descricao='RPG de ação desafiador em um mundo sombrio, com exploração, combates estratégicos e chefes poderosos.', imagem='projeto/imagensUsadas/imagensUsadas/ds2.png'),
+                Jogo(nome='Elden Ring', descricao='RPG de ação em mundo aberto que combina exploração, fantasia sombria, combates desafiadores e liberdade de progressão.', imagem='projeto/imagensUsadas/imagensUsadas/eldenring.png'),
+                Jogo(nome='Far Cry 6', descricao='Jogo de tiro em mundo aberto ambientado em uma ilha caribenha fictícia, onde você luta contra um regime ditatorial.', imagem='projeto/imagensUsadas/imagensUsadas/farcry6.png'),
+                Jogo(nome='Terraria', descricao='Aventura 2D que mistura exploração, construção, mineração e batalhas contra criaturas e chefes.', imagem='projeto/imagensUsadas/imagensUsadas/terraria.png'),
+                Jogo(nome='EA Sports FC 26 (FIFA 26)', descricao='Simulador de futebol com equipes, jogadores e competições, oferecendo modos individuais e multiplayer.', imagem='projeto/imagensUsadas/imagensUsadas/fifa26.png'),
+                Jogo(nome='Hollow Knight: Silksong', descricao='Aventura de ação em 2D na qual Hornet explora um reino misterioso, enfrentando inimigos e chefes desafiadores.', imagem='projeto/imagensUsadas/imagensUsadas/silksong.png'),
+                Jogo(nome='Monster Hunter Wilds', descricao='RPG de ação em que você caça monstros gigantes, coleta recursos e cria equipamentos cada vez mais poderosos.', imagem='projeto/imagensUsadas/imagensUsadas/mhw.png'),
+                Jogo(nome='Monster Hunter Rise', descricao='RPG de ação focado na caça de monstros, com combates dinâmicos, exploração e diversas armas.', imagem='projeto/imagensUsadas/imagensUsadas/mhr.png'),
+                Jogo(nome='The Binding of Isaac', descricao='Roguelike de ação com exploração de masmorras, itens aleatórios e desafios cada vez mais difíceis.', imagem='projeto/imagensUsadas/imagensUsadas/tboi.png'),]
+
+        db.add_all(jogos)
+        db.commit()
+        db.close()
