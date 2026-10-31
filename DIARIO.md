@@ -48,7 +48,7 @@ Próximo passo: Melhorar as rotas relacionadas aos jogos atualizar o css, e adic
 
 Data: 30/10/2026
 
-O que foi feito: Css atualizado, criação da classe pedidos e atualizações nas classes jogos e usuarios, para que os dados do usuario fiquem salvos quando ele for adicionar um jogo, função de adicionar categorias e admin no seed.py, troca de lógica no app.py, antes usava db = SessionLocal() o que não fecha a coexão, e agora usa o with que fecha a sessão sem problemas
+O que foi feito: Css atualizado, criação da classe pedidos e atualizações nas classes jogos e usuarios, para que os dados do usuario fiquem salvos quando ele for adicionar um jogo, função de adicionar categorias e admin no seed.py, troca de lógica no app.py, antes usava db = SessionLocal() o que não fecha a coexão, e agora usa o with que fecha a sessão sem problemas, mudanças nas classes de usuario e de jogo, agora Pedido serve como um intermediario entre as duas tabelas, usuario não pode mais cadastrar novos jogos, não há maais ligação direta entre usuarios e jogos, para gerar uma diferença entre os jogos disponiveis e os jogos que o usuario possui em sua lista pessoal, biblioteca(de jogos disponiveis) criada, faltando a opção de adicionar a lista pessoal.
 
 Dificuldade encontrada: Css tava mal organizado, com algumas classes sem utilizar o que confundiu bastante, quando a função de adicionar admin funcionava a gente entrava no projeto já logado na conta por causa do db = SessionLocal()
 
