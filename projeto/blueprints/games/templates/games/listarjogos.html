@@ -3,6 +3,19 @@
 {% block content %}
 <section >
     <h2 id="meus-jogos">Meus jogos</h2>
-    <p>Os seus jogos aparecerão aqui.</p>
+    
+    {% for jogo, categorias in jogos.items() %}
+
+        <h2>{{ jogo.nome }}</h2>
+
+        <h4>Categorias:</h4>
+
+        {% for categoria in categorias %}
+            <span>{{ categoria.nome }}</span>
+        {% endfor %}
+
+    {% endfor %}
+
+
 </section>
 {% endblock %}
