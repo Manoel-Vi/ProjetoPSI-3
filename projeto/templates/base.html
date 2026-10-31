@@ -14,11 +14,21 @@
         <div id="container-usuario">
                 
             {% if current_user.is_authenticated %}
+            <div id="containerVerificado">
+                <img id="userVerificado" src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="Usuário">
                 <h3 id="bem-vindo">Bem-vindo(a), {{ current_user.nome }}!</h3>
+            <div class="botao">
                 <a href="{{ url_for('index')}}">Voltar para o Inicio</a>
+            </div>
                 <br>
+                <div class="botao">
                 <a href="{{ url_for('auth.conta') }}">Acessar Conta</a>
+            </div>
+            <br>
+            <div class="botao">
                 <a href="{{ url_for('auth.logout') }}">Sair</a>
+            </div>
+            </div>
             {% else %}
             <img class="user" src="{{ url_for('static', filename='./imagensUsadas/user.png') }}" alt="Usuário">
                 <h3 class="bem-vindo">Bem-vindo(a), visitante!</h3>
