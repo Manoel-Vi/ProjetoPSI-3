@@ -3,6 +3,10 @@
 {% block content %}
 <section>
     <h2 id="meus-pedidos">Meus pedidos</h2>
-    <p>Seus pedidos aparecerão aqui.</p>
+    {% for pedido, jogo in pedidos %}
+        <p>{{ jogo.nome }}</p>
+    {% else %}
+        <p>Você ainda não possui pedidos.</p>
+    {% endfor %}
 </section>
 {% endblock %}

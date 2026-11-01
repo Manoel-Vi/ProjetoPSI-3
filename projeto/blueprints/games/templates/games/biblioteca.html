@@ -7,6 +7,9 @@
         <h2>Sua Biblioteca</h2>
         <p>Explore e gerencie seus jogos instalados e favoritos.</p>
     </div>
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
 
     <ul id="bibliotecaImagens">
         {% for jogo in jogos %}
@@ -16,6 +19,9 @@
                     <div class="info-jogo">
                         <p>{{ jogo.nome }}</p>
                     </div>
+                    <form action="{{ url_for('games.adicionar_pedido', id_jogo=jogo.id) }}" method="POST">
+                        <button type="submit">Adicionar aos pedidos</button>
+                    </form>
                 </div>
             </li>
         {% else %}

@@ -1,4 +1,4 @@
-from flask import render_template, flash
+from flask import render_template, flash, redirect, url_for
 from blueprints.games import games_bp
 from flask_login import login_required, current_user
 from database import SessionLocal
@@ -34,7 +34,37 @@ def listar_jogos():
 @games_bp.route('/lista_pedidos')
 @login_required
 def listar_pedidos():
-    return render_template("games/listarpedidos.html")
+    db = SessionLocal()
+
+    stmt = (
+        select(Pedido, Jogo)
+        .join(Jogo, Pedido.id_jogo == Jogo.id)
+        .where(Pedido.id_usuario == current_user.id)
+    )
+    pedidos = db.execute(stmt).all()
+    db.close()
+
+    return render_template("games/listarpedidos.html", pedidos=pedidos)
+
+@games_bp.route('/adicionar_pedido/<int:id_jogo>', methods=['POST'])
+@login_required
+def adicionar_pedido(id_jogo):
+    db = SessionLocal()
+    jogo = db.get(Jogo, id_jogo)
+
+    if not jogo:
+        db.close()
+        flash("Jogo não encontrado.")
+        return redirect(url_for('games.biblioteca'))
+
+    pedido = Pedido(id_usuario=current_user.id, id_jogo=jogo.id)
+    nome_jogo = jogo.nome
+    db.add(pedido)
+    db.commit()
+    db.close()
+
+    flash(f"{nome_jogo} foi adicionado aos pedidos!")
+    return redirect(url_for('games.biblioteca'))
 
 @games_bp.route('/biblioteca')
 @login_required
