@@ -35,26 +35,44 @@ NexusGX tem como objetivo permitir que os usuários organizem e gerenciem sua pr
 - nome (String)
 - email (String, Unique)
 - senha (String)
+- pedidos (Lista) -> Pedido
   
 # Jogo
 - id (Integer, PK)
 - nome (String)
 - descricao (String)
 - imagem (String)
-- 
+
+- pedidos (Lista) -> Pedido
+- categorias (Lista) -> jogo_categoria(tabela intermediaria)
+
 # Categoria
+- id (Integer, PK)
+- nome (String)
+
+- jogos (Listaa) -> jogo_categoria(tabela intermediaria)
+
 # Pedido
+- id (Integer, PK)
+- id_usuario (ForeignKey) -> Usuario
+- id_jogo (ForeignKey) -> Jogo
+
+- usuario (Lista) -> Usuario
+- jogo (Lista) -> Jogo
+
 
 # Explicação do relacionamento 1:N ;
+Usuario é a entidade capaz de possuir vários pedidos relacionados a si, porém a Entidade Pedido não pode ter vários usuários, tendo em vista que cada pedido pertence a somente um usuário e a um jogo por vez. Um relacionamento 1:N consiste, basicamente, em uma das tabelas poder ter elementos ligados a quantidades indeterminadas de elementos da outra tabela, porém sem que esses outros elementos possam se ligar a mais de um elemento da primeira.
 
 # Explicação do relacionamento N:N ;
+O relacionamento N:N define um relacionamento onde cada elemento de uma tabela pode possuir, de forma indireta, mais de um elemento de uma outra tabela, sendo indireto em teoria, por ser mediado através de uma terceira tabela que guarda as informações essenciais (ids) de cada um dos elementos das outras duas tabelas principais, como exemplo: Um usuário pode possuir vários jogos, e vice versa, através do relacionamento mútuo com uma terceira tabela chamada pedidos, que tem um relacionamento de 1:N com Usuário e com Jogo, tendo também como exemplo o relacionamento entre a tabela Categorias e a tabela de Jogos, que têm um relacionamento N:N intermediado pela tabela jogo_categoria, que é uma lista de dicionários com os ids do jogo e da categoria que se relacionam entre si.
 
 # Instruções para rodar o projeto
-- 1: Criar o ambiente vitual. py -m venv env
+- 1: Criar o ambiente virtual. comando: py -m venv env
 
-- 2: Ativar o ambiente. .\env\scripts\activate
+- 2: Ativar o ambiente. .\env\Scripts\activate
 
-- 3: Instalar os requerimentos. pip install -r requirements
+- 3: Instalar os requerimentos. pip install -r requirements.txt
 
 - 4: flask run --debug
 
