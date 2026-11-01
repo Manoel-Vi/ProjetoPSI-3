@@ -61,7 +61,7 @@ NexusGX tem como objetivo permitir que os usuários organizem e gerenciem sua pr
 - 5: Ser feliz
 
 # Declaração de autoria:
-Declaro que desenvolvemos este projeto e compreendendos o código entregue e que sou capaz de explicar e modificar suas partes principais.
+Declaro que desenvolvemos este projeto e compreendenmos o código entregue e que sou capaz de explicar e modificar suas partes principais.
 
 # Uso de IA:
 Usamos.
