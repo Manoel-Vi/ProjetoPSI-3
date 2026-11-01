@@ -69,6 +69,8 @@ Usamos.
 # Descrição do uso, se houver: (houve)
 - na criação da rota para fazer o botão de adicionar o jogo aos pedidos.
 - na div "esconder fundo" no css.
+- na rota dos jogos pessoais do usuário, para conseguir usar Pedido como intermediário, através de um select.
 
 # Justificativa e menções sobre o uso da IA generativa
 Prazo apertado e um pouco de falta de conhecimento técnico em algumas partes especificas. Romerito, você, é o cara.
+Principal uso: auxilio durante a produção do select na página que mostra os jogos do usuário, devido aos joins que o responsável por essa parte(Lucival), nao tinha tanta noção sobre como utilizar, principalmente por caausa do relacionamento N:N, que não conseguimos encontrar na documentação(talvez um erro de atenção nosso).
